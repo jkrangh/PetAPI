@@ -9,6 +9,7 @@ namespace PetAPI.Data
         {
         }
 
-        public DbSet<Dog> Dogs { get; set; } = default!;    
+        public DbSet<Dog> Dogs { get; set; } = default!;
+        public DbSet<Cat> Cats { get; set; } = default!;
     }
 }

@@ -1,6 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using PetAPI.Data;
+using PetAPI.Generated;
 
 namespace PetAPI
 {
@@ -14,6 +15,8 @@ namespace PetAPI
             builder.Services.AddAuthorization();
             builder.Services.AddDbContext<PetAPIContext>(options =>
                 options.UseInMemoryDatabase(("PetDb") ?? throw new InvalidOperationException("Error in InMemoryDatabase")));
+            builder.Services.AddTransient<IDog, DogRepository>();
+            builder.Services.AddTransient<ICat, CatRepository>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -34,6 +37,8 @@ namespace PetAPI
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            app.MapDogEndpoints();
+            app.MapCatEndpoints();
 
             app.UseHttpsRedirection();
 
