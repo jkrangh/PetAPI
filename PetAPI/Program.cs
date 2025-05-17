@@ -15,8 +15,9 @@ namespace PetAPI
             builder.Services.AddAuthorization();
             builder.Services.AddDbContext<PetAPIContext>(options =>
                 options.UseInMemoryDatabase(("PetDb") ?? throw new InvalidOperationException("Error in InMemoryDatabase")));
-            builder.Services.AddTransient<IDog, DogRepository>();
-            builder.Services.AddTransient<ICat, CatRepository>();
+            builder.Services.AddPetRepositories();
+            //builder.Services.AddTransient<IDog, DogRepository>();
+            //builder.Services.AddTransient<ICat, CatRepository>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -38,7 +39,7 @@ namespace PetAPI
                 app.UseSwaggerUI();
             }
             app.MapDogEndpoints();
-            app.MapCatEndpoints();
+            //app.MapCatEndpoints();
 
             app.UseHttpsRedirection();
 
