@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAPI", "PetAPI.csproj", "{41CA151B-0212-491B-9E79-C276F4C788BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAPI.Generators", "..\PetAPI.Generators\PetAPI.Generators.csproj", "{160AA6C0-A978-6C06-3230-F57FB12FE234}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41CA151B-0212-491B-9E79-C276F4C788BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41CA151B-0212-491B-9E79-C276F4C788BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41CA151B-0212-491B-9E79-C276F4C788BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41CA151B-0212-491B-9E79-C276F4C788BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{160AA6C0-A978-6C06-3230-F57FB12FE234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{160AA6C0-A978-6C06-3230-F57FB12FE234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{160AA6C0-A978-6C06-3230-F57FB12FE234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{160AA6C0-A978-6C06-3230-F57FB12FE234}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4EE39AB7-B3CC-42B5-BAEA-2B921C9C7A53}
+	EndGlobalSection
+EndGlobal
