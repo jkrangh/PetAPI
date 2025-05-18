@@ -14,6 +14,7 @@ namespace PetAPI.Generators
     {
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
+            //this array contains the name of interfaces the generator searches for
             var entityInterfaces = new[] { "IDog"/*, "ICat"*/ };
 
             var interfaceDeclarations = context.SyntaxProvider
@@ -25,7 +26,8 @@ namespace PetAPI.Generators
                 .Collect();
 
             context.RegisterSourceOutput(interfaceDeclarations, (ctx, interfaceSymbols) =>
-            {               
+            {
+                //generates repository and minimalApi-endpoints based on above interfaces
                 foreach (var symbol in interfaceSymbols) 
                 {
                     if (symbol is INamedTypeSymbol interfaceSymbol)
@@ -37,9 +39,11 @@ namespace PetAPI.Generators
                         ctx.AddSource($"{interfaceSymbol.Name.Substring(1)}Endpoints.g.cs", SourceText.From(endpointsCode, Encoding.UTF8));
                     }
                 }
+                //generates separate class for service registration <interface, repository>
                 var diRegistrationCode = GenerateDiRegistration(interfaceSymbols.OfType<INamedTypeSymbol>().ToList());
                 ctx.AddSource("DependencyInjectionExtensions.g.cs", SourceText.From(diRegistrationCode, Encoding.UTF8));
 
+                //wraps all endpoints under a single class, no need to add them individually in Program.cs
                 var allEntityNames = interfaceSymbols.OfType<INamedTypeSymbol>()
                     .Select(symbol => symbol.Name.Substring(1)).ToList();
                 var petEndpointsWrapperCode = GenerateAllEndpointsWrapper(allEntityNames);
