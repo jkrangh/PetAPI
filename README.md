@@ -8,6 +8,6 @@ Whats needed for auto-generating for new models is:
 3. DbSet in PetAPIContext called '[model]s'
 4. interfacename added to entityInterfaces in PetAPISourceGenerator
 
-This will generate mentiond files automatically
+This will generate mentioned files automatically
 
 Dataseeder in Data.DataSeeder for spicing up demoing
