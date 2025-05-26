@@ -15,7 +15,7 @@ namespace PetAPI.Generators
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
             //this array contains the name of interfaces the generator searches for
-            var entityInterfaces = new[] { "IDog"/*, "ICat"*/ };
+            var entityInterfaces = new[] { "IDog", "ICat" };
 
             var interfaceDeclarations = context.SyntaxProvider
                 .CreateSyntaxProvider(
@@ -136,7 +136,7 @@ namespace PetAPI.Generators
                 var parameters = string.Join(",", parameterList);
                 var parameterNames = string.Join(",", method.Parameters.Select(p => p.Name));
                 code.AppendLine($$"""
-                            app.MapGet("/{{entityPlural}}", async ({{parameters}}) =>
+                            app.MapGet("/{{entityPlural}}/{{parameterNames}}", async ({{parameters}}) =>
                                 await repo.{{method.Name}}({{parameterNames}}));
                     """);
             }
