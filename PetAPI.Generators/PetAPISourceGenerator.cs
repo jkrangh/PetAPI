@@ -125,11 +125,27 @@ namespace PetAPI.Generators
                 {
                     public static void Map{{entityName}}Endpoints(this WebApplication app)
                     {
-                        app.MapGet("/{{entityPlural}}", async ({{interfaceName}} repo) =>
-                            await repo.GetAllAsync());
+                """);
+            foreach(var method in interfaceSymbol.GetMembers().OfType<IMethodSymbol>())
+            {
+                var parameterList = new List<string>() { $"{interfaceName} repo" };
+                foreach (var parameter in method.Parameters)
+                {
+                    parameterList.Add($"{parameter.Type.ToDisplayString()} {parameter.Name}");
+                }
+                var parameters = string.Join(",", parameterList);
+                var parameterNames = string.Join(",", method.Parameters.Select(p => p.Name));
+                code.AppendLine($$"""
+                            app.MapGet("/{{entityPlural}}", async ({{parameters}}) =>
+                                await repo.{{method.Name}}({{parameterNames}}));
+                    """);
+            }
+            code.AppendLine("""
+                       // app.MapGet("/{{entityPlural}}", async ({{interfaceName}} repo) =>
+                            // await repo.GetAllAsync());
 
-                        app.MapGet("/{{entityPlural}}/{{"{id}"}}", async ({{interfaceName}} repo, int id) =>
-                            await repo.GetByIdAsync(id));
+                       // app.MapGet("/{{entityPlural}}/{{"{id}"}}", async ({{interfaceName}} repo, int id) =>
+                            // await repo.GetByIdAsync(id));
                     }
                 }                
                 """);
