@@ -14,7 +14,7 @@ namespace PetAPI.Data
         public void SeedData()
         {
             context.Dogs.AddRange(DogData());
-            //context.Cats.AddRange(CatData());
+            context.Cats.AddRange(CatData());
             context.SaveChanges();
         }
 
@@ -28,14 +28,14 @@ namespace PetAPI.Data
             };
         }
 
-        //private List<Cat> CatData()
-        //{
-        //    return new List<Cat>()
-        //    {
-        //        new Cat() { Id = 1, Name = "Missan" },
-        //        new Cat() { Id = 2, Name = "Nissan" },
-        //        new Cat() { Id = 3, Name = "Dr. Zjivago" }
-        //    };
-        //}
+        private List<Cat> CatData()
+        {
+            return new List<Cat>()
+            {
+                new Cat() { Id = 1, Name = "Missan" },
+                new Cat() { Id = 2, Name = "Nissan" },
+                new Cat() { Id = 3, Name = "Dr. Zjivago" }
+            };
+        }
     }
 }

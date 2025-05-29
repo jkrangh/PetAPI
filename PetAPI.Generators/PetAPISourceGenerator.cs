@@ -15,7 +15,7 @@ namespace PetAPI.Generators
         public void Initialize(IncrementalGeneratorInitializationContext context)
         {
             //this array contains the name of interfaces the generator searches for
-            var entityInterfaces = new[] { "IDog" };
+            var entityInterfaces = new[] { "IDog", "ICat" };
 
             var interfaceDeclarations = context.SyntaxProvider
                 .CreateSyntaxProvider(
