@@ -138,6 +138,7 @@ namespace PetAPI.Generators
                 code.AppendLine($$"""
                             app.MapGet("/{{entityPlural}}/{{parameterNames}}", async ({{parameters}}) =>
                                 await repo.{{method.Name}}({{parameterNames}}));
+
                     """);
             }
             code.AppendLine("""
